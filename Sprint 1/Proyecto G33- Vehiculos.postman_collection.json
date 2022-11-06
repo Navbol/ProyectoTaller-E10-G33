@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "348488f9-ebef-48db-a759-35dc9f58659f",
+		"name": "Proyecto G33- Vehiculos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16617373"
+	},
+	"item": [
+		{
+			"name": "AgregarVehiculo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "placa",
+							"value": "ABC890",
+							"type": "text"
+						},
+						{
+							"key": "marca",
+							"value": "Chevrolet",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "Camion",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3002/AgregarVehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"AgregarVehiculo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarVehiculo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "placa",
+							"value": "GHu564",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3002/EliminarVehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"EliminarVehiculo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FiltroVehiculo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cedula",
+							"value": "89435228",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Angela Betancurt",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/FiltroCedula",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"FiltroCedula"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditarVehiculo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cedula",
+							"value": "89435228",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Maria",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/EditarUsuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"EditarUsuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarVehiculos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:3001/AllUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"AllUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarVehiculo",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

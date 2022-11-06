@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "26d9c45c-c900-444a-ae9b-e3a486243efb",
+		"name": "Proyecto G33- Usuarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16617373"
+	},
+	"item": [
+		{
+			"name": "AgregarUsuario",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/EliminarUsuario?cedula=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"EliminarUsuario"
+					],
+					"query": [
+						{
+							"key": "cedula",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarUsuario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cedula",
+							"value": "89435228",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Angela Betancurt",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/FiltroCedula",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"FiltroCedula"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditarUsuario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cedula",
+							"value": "89435228",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Maria",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/EditarUsuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"EditarUsuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarUsuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:3001/AllUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"AllUsers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
