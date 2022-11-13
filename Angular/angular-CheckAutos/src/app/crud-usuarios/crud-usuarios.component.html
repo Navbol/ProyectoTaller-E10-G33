@@ -1,0 +1,88 @@
+<div class="cls-content-page">
+
+    <div>
+        <div>
+            <input type="text" placeholder="Edad"
+            [(ngModel)] = "edad"
+            >
+        </div>
+        <!-- <div>
+            <button>Validar</button>
+        </div> -->
+        <div>
+            <!-- <span *ngIf="edad >=18" style="background: red;"> Es mayor de edad </span>
+            <span *ngIf="edad < 18" style="background: blue;"> Es menor de edad </span> -->
+
+            <!-- <span [ngStyle]="{'background': edad >= 18 ? 'Red' : 'Blue'}"> {{ edad >= 18 ? 'Es mayor' : 'Es menor'}}</span> -->
+            <span [ngClass]="{'cls-mayor': edad >= 18, 'cls-menor': edad < 18}">{{ edad >= 18 ? 'Es mayor' : 'Es menor'}} </span>
+        </div>
+    </div>
+    <h3>{{titulo}}</h3>
+
+    <button (click)= "cambiarTitulo()" mat-raised-button color="accent">Cambiar</button>
+
+    <div style="display: flex;    align-items: center;    gap: 30px; justify-content: space-between">
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Buscar</mat-label>
+            <input matInput type="text" [(ngModel)]="value"
+            (focus)="focusBuscar()" (blur)="blurBuscar()"/>
+            <button
+              *ngIf="value"
+              matSuffix
+              mat-icon-button
+              aria-label=""
+              (click)="value = ''"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        
+        <div style="display: flex;gap: 10px;position: relative;top: -9px">
+            <input placeholder="Nombre" type="text" style="height: 35px;">
+            <button (click)="cambiarTitulo()" mat-raised-button color="accent">
+                Editar Nombre
+            </button>
+        </div>
+          
+    </div>
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="apellido">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="telefono">
+              <th mat-header-cell *matHeaderCellDef> Weight </th>
+              <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="fechaNacimiento">
+              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+              <td mat-cell *matCellDef="let element"> {{element.fechaNacimiento}} </td>
+            </ng-container>
+          
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
+
+
+
+  

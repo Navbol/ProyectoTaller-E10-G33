@@ -1,0 +1,146 @@
+<div class="cls-content-page">
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 30px;
+      "
+    >
+  
+      <span
+        class="cls-button-circle"
+        style="position: relative; top: -10px"
+        (click)="changeShowForm()"
+        >+</span
+      >
+    </div>
+
+<div class="cls-form" [formGroup]="formVehiculo" *ngIf="showForm">
+    <div class="cls-field">
+        <label for="">Placa:</label>
+        <input type="text" formControlName="placa" />
+      </div>
+  
+    <div class="cls-field">
+        <label for="">Marca:</label>
+        <select name="" id="" formControlName="marca">
+          <option *ngFor="let marca of marcas" [value]="marca.value">
+            {{ marca.text }}
+          </option>
+        </select>
+    </div>      
+
+    <div class="cls-field">
+        <label for="">Tipo:</label>
+        <select name="" id="" formControlName="tipo">
+          <option *ngFor="let tipo of tipos" [value]="tipo.value">
+            {{ tipo.text }}
+          </option>
+        </select>
+    </div>      
+
+
+
+    <div class="cls-field">
+        <label for="">Línea:</label>
+        <input type="text" formControlName="linea" />
+     </div>
+
+
+    <div class="cls-field">
+      <label for="">Cilindraje:</label>
+      <input type="text" formControlName="cilindraje" />
+    </div>
+
+    <div class="cls-field">
+      <label for="">Modelo:</label>
+      <input type="number" formControlName="modelo" />
+    </div>
+
+    <div class="cls-field">
+        <label for="">Capacidad:</label>
+        <input type="number" formControlName="capacidad" />
+      </div>
+  
+    <div class="cls-field">
+      <label for="">Popietario:</label>
+      <select name="" id="" formControlName="idPropietario" ng-style="{'width': getMaxLength() + 'px'}">
+        <option *ngFor="let propietario of dataPropietarios" [value]="propietario.idPropietario">
+          {{ propietario.nombre + ' ' + propietario.apellido}}
+        </option>
+      </select>
+    </div>
+
+    <button
+      *ngIf="modeForm == 'adicion'"
+      (click)="saveVehiculo()"
+      style="color: #fff !important"
+      mat-button
+      color="primary"
+    >
+      Agregar
+    </button>
+
+    <button
+      *ngIf="modeForm == 'edicion'"
+      (click)="updateVehiculo()"
+      style="color: #fff !important"
+      mat-button
+      color="primary"
+    >
+      Guardar
+    </button>
+</div>
+
+
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <h4><b>Gestión de Vehículos</b></h4> 
+          </div>  
+  
+          <table id="customers">
+            <thead>
+               <tr class="center-align" >
+                 <th>Placa</th>
+                 <th>Marca</th>
+                 <th>Tipo</th>
+                 <th>Línea</th>
+                 <th>Cilindraje</th>
+                 <th>Modelo</th>
+                 <th>Capacidad</th>
+                 <th>Propietario</th>
+                 <th>Acciones</th>
+               </tr>
+             </thead>
+             <tbody >
+               <tr  *ngFor="let vehiculo of dataSource" class="center-align" >
+                 <td>{{ vehiculo.placa }}</td>
+                 <td>{{ vehiculo.marca }}</td>
+                 <td>{{ vehiculo.tipo }}</td>
+                 <td>{{ vehiculo.linea }}</td>
+                 <td>{{ vehiculo.cilindraje}}</td>
+                 <td>{{ vehiculo.modelo }}</td>
+                 <td>{{ vehiculo.capacidad }}</td>
+                 <td>{{ vehiculo.idPropietario }}</td>
+                 <!-- <td>{{ getSede(propietario.idSede) }}</td> -->
+                 <!-- <td>{{ getSedeId(propietario.idSede) }}</td> -->
+                 
+                 <td>
+                    <a class="cls-link" (click)="deleteVehiculo(vehiculo.placa)">Eliminar</a> |
+                    <a class="cls-link" >Editar</a> |
+                 </td>
+ 
+
+                </tr>
+               <tr>
+                 <td *ngIf="dataSource.length == 0" colspan="6">No Employee Found</td>
+               </tr>
+             </tbody>
+       </table>    
+        </div>   
+      </div>
+</div> 

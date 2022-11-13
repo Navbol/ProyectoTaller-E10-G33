@@ -1,0 +1,145 @@
+<div class="cls-content-page">
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 30px;
+      "
+    >
+  
+      <span
+        class="cls-button-circle"
+        style="position: relative; top: -10px"
+        (click)="changeShowForm()"
+        >+</span
+      >
+    </div>
+
+<div class="cls-form" [formGroup]="formRevision" *ngIf="showForm">
+    <!-- <div class="cls-field">
+        <label for="">Revisión #</label>
+        <input type="text" formControlName="idRevision" />
+      </div> -->
+  
+    <div class="cls-field">
+      <label for="">Fecha:</label>
+      <input type="date" formControlName="fecha" />
+    </div>
+
+    <div class="cls-field">
+        <label for="">Hora:</label>
+        <input type="time" placeholder="00:00" formControlName="hora" />
+      </div>
+
+      <div class="cls-field">
+        <label for="">Estado:</label>
+        <select name="" id="" formControlName="estado">
+          <option *ngFor="let estado of estados" [value]="estado.value">
+            {{ estado.text }}
+          </option>
+        </select>
+    </div>      
+      
+
+    <div class="cls-field">
+      <label for="">Placa:</label>
+      <select name="" id="" formControlName="placa" ng-style="{'width': getMaxLength() + 'px'}">
+        <option *ngFor="let vehiculo of dataVehiculos" [value]="vehiculo.placa">
+          {{ vehiculo.placa }}
+        </option>
+      </select>
+    </div>
+
+    <div class="cls-field">
+        <label for="">Mecánico:</label>
+        <select name="" id="" formControlName="idMecanico" ng-style="{'width': getMaxLength() + 'px'}">
+          <option *ngFor="let mecanico of dataMecanicos" [value]="mecanico.idMecanico">
+            {{ mecanico.nombre + ' ' + mecanico.apellido }}
+          </option>
+        </select>
+    </div>
+
+
+
+
+    <div class="cls-field">
+        <label for="">Sede:</label>
+        <select name="" id="" formControlName="idSede" ng-style="{'width': getMaxLength() + 'px'}">
+          <option *ngFor="let sede of dataSedes" [value]="sede.idSede">
+            {{ sede.nombre }}
+          </option>
+        </select>
+    </div>
+
+  
+    <button
+      *ngIf="modeForm == 'adicion'"
+      (click)="saveRevision()"
+      style="color: #fff !important"
+      mat-button
+      color="primary"
+    >
+      Agregar
+    </button>
+
+    <button
+      *ngIf="modeForm == 'edicion'"
+      (click)="updateRevision()"
+      style="color: #fff !important"
+      mat-button
+      color="primary"
+    >
+      Guardar
+    </button>
+</div>
+
+
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <h4><b>Gestión de Revisiones</b></h4> 
+          </div>  
+  
+          <table id="customers">
+            <thead>
+               <tr class="center-align" >
+                 <th>Revisión #</th>
+                 <th>Fecha</th>
+                 <th>Hora</th>
+                 <th>Estado</th>
+                 <th>Placa</th>
+                 <th>Mecánico</th>
+                 <th>Sede</th>
+                 <th>Acciones</th>
+               </tr>
+             </thead>
+             <tbody >
+               <tr  *ngFor="let revision of dataSource" class="center-align" >
+                 <td>{{ revision.idRevision }}</td>
+                 <td>{{ revision.fecha | date:'yyyy-MMM-dd'}}</td>
+                 <td>{{ revision.hora | date:"hh:mma"}}</td>
+                 <td>{{ revision.estado}}</td>
+                 <td>{{ revision.placa }}</td>
+                 <td>{{ revision.idMecanico}}</td>
+                 <td>{{ revision.idSede }}</td>
+                 <!-- <td>{{ getSede(propietario.idSede) }}</td> -->
+                 <!-- <td>{{ getSedeId(propietario.idSede) }}</td> -->
+                 
+                 <td>
+                    <a class="cls-link" (click)="deleteRevision(revision.idRevision)">Eliminar</a> |
+                    <a class="cls-link" >Editar</a> |
+                 </td>
+ 
+
+                </tr>
+               <tr>
+                 <td *ngIf="dataSource.length == 0" colspan="6">No Employee Found</td>
+               </tr>
+             </tbody>
+       </table>    
+        </div>   
+      </div>
+</div> 

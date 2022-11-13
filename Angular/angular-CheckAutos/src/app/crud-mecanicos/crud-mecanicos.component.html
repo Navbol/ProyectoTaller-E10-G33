@@ -1,0 +1,134 @@
+
+<div class="cls-content-page">
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 30px;
+      "
+    >
+  
+      <span
+        class="cls-button-circle"
+        style="position: relative; top: -10px"
+        (click)="changeShowForm()"
+        >+</span
+      >
+    </div>
+
+<div class="cls-form" [formGroup]="formMecanico" *ngIf="showForm">
+    <div class="cls-field">
+        <label for="">Identificación:</label>
+        <input type="text" formControlName="idMecanico" />
+      </div>
+  
+    <div class="cls-field">
+      <label for="">Nombre:</label>
+      <input type="text" formControlName="nombre" />
+    </div>
+
+    <div class="cls-field">
+        <label for="">Apellido:</label>
+        <input type="text" formControlName="apellido" />
+      </div>
+  
+    <div class="cls-field">
+      <label for="">Teléfono:</label>
+      <input
+        type="text"
+        placeholder="+57 00 00 00"
+        formControlName="telefono"
+      />
+    </div>
+
+    <div class="cls-field">
+      <label for="">Fecha de nacimiento:</label>
+      <input type="date" formControlName="fechaNacimiento" />
+    </div>
+
+    <div class="cls-field">
+      <label for="">Contraseña:</label>
+      <input type="password" formControlName="contrasena" />
+    </div>
+
+    <div class="cls-field">
+      <label for="">Sede:</label>
+      <select name="" id="" formControlName="idSede" ng-style="{'width': getMaxLength() + 'px'}">
+        <option *ngFor="let sede of dataSedes" [value]="sede.idSede">
+          {{ sede.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <button
+      *ngIf="modeForm == 'adicion'"
+      (click)="saveUser()"
+      style="color: #fff !important"
+      mat-button
+      color="primary"
+    >
+      Agregar
+    </button>
+
+    <button
+      *ngIf="modeForm == 'edicion'"
+      (click)="updateUser()"
+      style="color: #fff !important"
+      mat-button
+      color="primary"
+    >
+      Guardar
+    </button>
+</div>
+
+
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <h4><b>Gestión de Mecánicos</b></h4> 
+          </div>  
+  
+          <table id="customers">
+            <thead>
+               <tr class="center-align" >
+                 <th>Cedula</th>
+                 <th>Nombre</th>
+                 <th>Apellido</th>
+                 <th>Telefono</th>
+                 <th>Fecha de Nacimiento</th>
+                 <th>Sede</th>
+                 <th>Acciones</th>
+               </tr>
+             </thead>
+             <tbody >
+               <tr  *ngFor="let mecanico of dataSource" class="center-align" >
+                 <td>{{ mecanico.idMecanico }}</td>
+                 <td>{{ mecanico.nombre }}</td>
+                 <td>{{ mecanico.apellido }}</td>
+                 <td>{{ mecanico.telefono }}</td>
+                 <td>{{ mecanico.fechaNacimiento | date:'yyyy-MMM-dd'}}</td>
+                 <td>{{ mecanico.idSede }}</td>
+                 <!-- <td>{{ getSede(mecanico.idSede) }}</td> -->
+                 <!-- <td>{{ getSedeId(mecanico.idSede) }}</td> -->
+                 
+                 <td>
+                    <a class="cls-link" (click)="deleteMecanico(mecanico.idMecanico)">Eliminar</a> |
+                    <a class="cls-link" >Editar</a> |
+                 </td>
+ 
+
+                </tr>
+               <tr>
+                 <td *ngIf="dataSource.length == 0" colspan="6">No Employee Found</td>
+               </tr>
+             </tbody>
+       </table>    
+        </div>   
+      </div>
+</div> 
+
+
+
